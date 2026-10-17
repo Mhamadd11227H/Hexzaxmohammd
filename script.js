@@ -3,9 +3,19 @@
 
 /* ═══ ١. ڕێکخستن — محەمەد ل ڤێرێ دەستکاری دکەت ═══ */
 const CFG={
-  startDate:"",  // ڕێکەفتا دەستپێکا چیرۆکێ، وەک: "2024-02-14T18:00". ئەگەر ڤالا بیت، ژمێرەر داخازا دانانێ دکەت
+  startDate:"2025-10-18T00:00",  // ڕێکەفتا دەستپێکا چیرۆکێ، وەک: "2024-02-14T18:00". ئەگەر ڤالا بیت، ژمێرەر داخازا دانانێ دکەت
   secretPhrase:"هێژاا",  // ئەگەر ئەڤ پەیڤە ل کیبۆردێ بهێتە نڤیسین، پەیامەکا نهێنی دەردکەڤیت
-  song:"",  // ناڤێ پەڕگەیا گۆرانیێ یا تە خودان، وەک: "song.mp3" (دەبێت ل تەنیشت index.html بیت)
+  song:"firoz.mp3",  // ناڤێ پەڕگەیا گۆرانیێ یا تە خودان، وەک: "song.mp3" (دەبێت ل تەنیشت index.html بیت)
+
+  /* وێنەیێن ئەلبوومێ — هەر وێنەیەک ڕێزەکە. src = ڕێیا وێنەی، cap = نڤیسینا ل بن وێنەی
+     نموونە: {src:"photos/1.jpg", cap:"ڕۆژا ئێکێ"},   (پەوشگەهەکێ ب ناڤێ photos چێبکە) */
+  photos:[
+    // {src:"photos/1.jpg", cap:"ل ڤێرێ نڤیسینەکا شرین بنڤیسە"},
+    // {src:"photos/2.jpg", cap:"بیرهاتنەکا دی"},
+    // {src:"photos/3.jpg", cap:"بیرهاتنەکا دی"},
+    // {src:"photos/4.jpg", cap:"بیرهاتنەکا دی"},
+     
+  ],
 
   /* بیرهاتنێن نموونە — ب بیرهاتنێن ڕاستەقینە بگۆڕە. هەر {} یەک بیرهاتنە: t = ناڤنیشان، d = نڤیسین */
   timeline:[{
@@ -13,7 +23,7 @@ const CFG={
     d:" 😂 دەسپێکەکا جوان و تژی ژ تورەیێ ."
   },{
     t:"دەمێن ئێکێ یێن تایبەت",
-    d:"  😂🥹 ئکەمین ئاخفتنا من و تە بوموبالیێ ."
+    d:"  😂🥹 ئکەمین ئاخفتنا من و تە ب موبالیێ ."
   },{
     t:"تشتێن بچووک",
     d:" 🥺😭 گرنگی دانا ئکوو دوو ل هەمی دەما ."
@@ -534,3 +544,44 @@ $('#mu').onclick=()=>{
 };
 $('#vo').oninput=e=>au.volume=e.target.value;
 au.volume=.6;
+
+/* ═══ ١٧. ئەلبوما وێنەیان (وەک پەرتووکەکێ) ═══ */
+const ALB=[{k:'cover'},...CFG.photos.map(p=>({k:'ph',p})),{k:'end'}];
+if(!CFG.photos.length)ALB.splice(1,0,{k:'none'});
+let ai=0;
+function mk(t,c,x){const e=document.createElement(t);if(c)e.className=c;if(x)e.textContent=x;return e}
+function albShow(d){
+  const pg=$('#pg'),it=ALB[ai];
+  pg.innerHTML='';
+  pg.style.setProperty('--d',d||0);
+  if(it.k==='cover'){
+    const c=mk('div','cvr');
+    c.append(mk('div','ct','ئەلبوما بیرهاتنێن مە'),mk('div','cn2','♡'),mk('div','cs','محەمەد ♡ هێژا'),mk('div','ch','پەرێ ڤەگەرینە ‹'));
+    pg.append(c);
+  }else if(it.k==='ph'){
+    const f=mk('figure','pol'),im=document.createElement('img');
+    im.src=it.p.src;im.alt=it.p.cap||'وێنە';im.loading='lazy';
+    im.onerror=()=>{im.replaceWith(mk('div','nop','وێنە نەهاتە دیتن. ناڤێ فایلێ د CFG.photos دا بپشکنە.'))};
+    f.append(im,mk('figcaption','',it.p.cap||''));
+    f.style.rotate=((ai%2?1:-1)*1.2)+'deg';
+    pg.append(f);
+  }else if(it.k==='none'){
+    pg.append(mk('div','cvr','وێنەیێن خۆ د script.js دا، د CFG.photos دا زێدە بکە، دێ ل ڤێرێ ببینی ♡'));
+  }else{
+    const c=mk('div','cvr');
+    c.append(mk('div','ct','وێنەیێن مە ب دووماهی نایێن...'),mk('div','cn2','♡'),mk('div','cs','هێشتا پەڕێن زێدە چاڤەرێنە'));
+    pg.append(c);
+  }
+  pg.style.animation='none';pg.getBoundingClientRect();pg.style.animation='';
+  $('#bc').textContent=(ai+1)+' / '+ALB.length;
+  $('#bp').disabled=ai===0;$('#bn').disabled=ai===ALB.length-1;
+  if(d)tone(420);
+}
+function albGo(d){const n=ai+d;if(n<0||n>=ALB.length)return;ai=n;albShow(d)}
+$('#bn').onclick=()=>albGo(1);
+$('#bp').onclick=()=>albGo(-1);
+let tx0=0;
+$('#book').addEventListener('touchstart',e=>{tx0=e.touches[0].clientX},{passive:true});
+$('#book').addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx0;if(Math.abs(dx)>45)albGo(dx<0?1:-1)});
+$('#book').onclick=e=>{if(ai===0&&e.target.closest('.cvr'))albGo(1)};
+albShow(0);
