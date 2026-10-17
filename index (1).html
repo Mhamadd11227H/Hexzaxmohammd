@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!-- index.html: ناڤەڕۆک | style.css: ڕووکار | script.js: کارکرن (CFG ل سەر script.js) -->
+<html lang="ku" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>محەمەد × هەجها — گەردوونەک ب تنێ بۆ تە</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head><body>
+<canvas id="bg"></canvas>
+<svg width="0" height="0"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9ec4"/><stop offset="1" stop-color="#b57bff"/></linearGradient></defs></svg>
+
+<!-- ══════ دەستپێک — شاشا ئێکێ ══════ -->
+<div id="intro">
+ <p id="i1">د ناڤ ڤی گەردوونێ بێ‌کۆتایێ دا... دلەک هەیە، ئەو دێ هەردەم تە هەلبژێریت.</p>
+ <p id="i2">و ئەو دل یێ محەمەدی یە.</p>
+ <svg class="heart" viewBox="0 0 100 100"><path d="M50 90C8 60 4 30 25 19c14-6 25 4 25 13 0-9 11-19 25-13 21 11 17 41-25 71z"/></svg>
+ <button class="btn" id="enter">بچە ناڤ گەردوونا مە یا بچووک ♡</button>
+ <div class="foot">ب هەمی دلێ خۆ بۆ هەجها هاتییە چێکرن.</div>
+</div>
+
+<main id="main" hidden>
+
+<!-- ══════ هێرۆ — سەرێ پەڕێ ══════ -->
+<section id="hero">
+ <span class="tiny" style="top:12%;right:14%" id="gs1">✦</span>
+ <h1>بۆ ئێکانە و ئێکەما من، هەجها ♡</h1>
+ <canvas id="hc" width="560" height="560" aria-label="دلەک ژ ستێران"></canvas>
+ <p id="typed" aria-live="polite"></p>
+ <div class="row"><a class="btn" href="#story" style="text-decoration:none;color:inherit">ئەڤینا مە بدۆزە</a><button class="btn" id="sec1">پەیامەکا نهێنی ڤەکە</button></div>
+</section>
+
+
+<!-- ══════ نامەیا مۆرکری ══════ -->
+<section id="letter">
+ <h2>نامەیەک ب دلێ خۆ نڤیسی</h2><p class="sub">هندەک هەست ژ پەیڤێن ئاسایی مەزنترن.</p>
+ <button class="env" id="env" aria-label="مۆرا نامەیێ ڤەکە"><span class="seal">M+H</span></button>
+ <article class="paper" id="paper">
+ <p>هەجهایا من یا شرین،</p>
+ <p>ئەگەر ئەز بشێم تشتەکی بدەمە تە، دێ ڤی دەرفەتێ دەمە تە کو تو خۆ ب چاڤێن من ببینی. ئەو دەم تو دێ تێگەهی بۆچی تو ژ من ڤە ئەوەندە ب بهایی، بۆچی بزەکا تە ڕۆژێن من یێن گران سڤک دکەت، و بۆچی دەمێن هەرە بچووک ژی دبنە ژ بیرهاتنێن من یێن هەرە خوش.</p>
+ <p>تو نە تنێ کەسەکی کو ئەز حەزێ دکەم؛ تو بوویە پارچەکا جوان ژ وی ڕێیا ئەز ئایندا خۆ پێ دبینم.</p>
+ <p>ئەز نەشێم بەلێن بدەم کو هەمی ڕۆژ دێ ئاسان بن، یان کو ئەم چ جاران دێ ناکۆک نەبین. بەلێ ئەز بەلێن ددەم کو فێر ببم چاوا باشتر حەزێ ژ تە بکەم، دەمێ تو پێدڤی گوهدارییێ بی گوهێ خۆ بدەمە تە، ڕێزێ ل دلێ تە بگرم، و هەردەم ڕاستی، میهرەبانی و سەبرێ هەلبژێرم.</p>
+ <p>ئەز دڤێت ل گەل تە ب تشتێن هەرە سادە بکەنم، خەونێن تە پیرۆز بکەم، دەمێ ژیان گران بیت پشتەڤانییا تە بکەم، و بیرهاتنان چێکەم کو پاشی سالان ئەم ب وان بکەنین.</p>
+ <p>و ئەگەر ڕۆژەکێ تو ژ من بپرسی: «جهێ تە یێ هەرە حەزکری ل دنیایێ کیژە؟» دێ بێژم: ئەو جهێ ئەز ل تە نێزیک دانیشتبم و ببینم تو دکەنی.</p>
+ <p>چنکی یا هەرە شرین ل ئایندێ، ئەوە کو ئەز بشێم ب تە ڤە پارڤە بکەم.</p>
+ <p>تو سلاڤا من یا ئێکێ، فکرا من یا هەرە شرین، و ئەو کەس یێ دەمێن ئاسایی دکەتە نایاب.</p>
+ <p>هەر چەند ئەڤ ماڵپەڕە جوان بیت، ناشێت هەمی ئەو یا ئەز ژ تە هەست پێ دکەم بگرێت.</p>
+ <p>ب هەمی ئەڤینا دلێ من دشێت بگرێت،</p>
+ <p class="sig">یێ تە، محەمەد ♡</p>
+ </article>
+</section>
+
+
+<!-- ══════ ڕێزا چیرۆکێ ══════ -->
+<section id="story">
+ <h2>چیرۆکا مە — پەرتووکا من یا دلخوش</h2><p class="sub">ڤان نموونان ب بیرهاتنێن خۆ یێن ڕاستەقینە بگوهۆڕە (CFG.timeline).</p>
+ <div class="tl" id="tl"></div>
+ <div class="c"><button class="btn" id="addb">بیرهاتنەکا دی یا جوان زێدە بکە</button></div>
+ <form class="add" id="af"><input id="at" placeholder="ناڤنیشان" required><textarea id="ad" rows="3" placeholder="بیرهاتن..." required></textarea><button class="btn">تۆمار بکە</button></form>
+</section>
+
+
+<!-- ══════ ئاسمانا هۆکاران ══════ -->
+<section id="reasons">
+ <h2>هزار هۆکارێن بچووک</h2><p class="sub">دەستێ بدە ستێرەکێ.</p>
+ <div id="sky"><svg><line id="ln" stroke="#ecd29b" stroke-width="1.5" opacity="0"/></svg><span id="core">♡</span></div>
+ <div class="glass" id="rmsg">ستێرەکێ هەلبژێرە...</div>
+</section>
+
+
+<!-- ══════ دلێ لێدەر ══════ -->
+<section id="beat">
+ <h2>دو ناڤ، چیرۆکەک یا جوان</h2>
+ <div class="names">محەمەد ♡ هەجها</div>
+ <svg id="bh" viewBox="0 0 100 100" role="button" aria-label="دلێ من ببەژینە"><path fill="url(#hg)" d="M50 90C8 60 4 30 25 19c14-6 25 4 25 13 0-9 11-19 25-13 21 11 17 41-25 71z"/></svg>
+ <div class="c"><button class="btn" id="tm">دلێ من ببەژینە</button></div>
+ <div class="msg" id="bm"></div>
+</section>
+
+
+<!-- ══════ باخچەیا بیرهاتنان ══════ -->
+<section id="garden">
+ <h2>باخچەیا بیرهاتنێن مە</h2><p class="sub">گولەک ڤەکە، هیڤییەک بخوینە.</p>
+ <div id="gd"></div><div class="msg" id="gm"></div>
+</section>
+
+
+<!-- ══════ نامەیا ئایندێ ══════ -->
+<section id="future">
+ <h2>نامەیەک ژ ئایندێ</h2><p class="sub">ئایندەیەکا خەیاڵی و هیڤیدار — نە پێشبینی و نە بەلێنا هەمی ڕووداوان.</p>
+ <div class="c"><button class="env" id="fenv" aria-label="نامەیا ئایندێ ڤەکە" style="background:linear-gradient(160deg,#4a3410,#2a1c08)"><span class="seal" style="background:radial-gradient(circle at 35% 30%,#ffe9a8,#b98a1e);color:#3a2a05">♡</span></button></div>
+ <article class="paper" id="fpaper">
+ <p>هەجهایا من،</p>
+ <p>ئەز ژ ئایندێیەکا دووردا دنڤیسم، ئایندەیەک کو ئەز و تو هێشتا پێکڤە گەشە دکەین. ئەڤە خەیاڵەکە یا هیڤیدارە، نە پێشبینییە.</p>
+ <p>ئەم هێشتا ب تشتێن سادە دکەنین؛ فنجانەک چا، ڕێیەکا درێژ، یان گوتنەکا بێ مانا کو تنێ ئەم تێدگەهین. ئەم هەردوو پشتەڤانییا خەونێن ئێک دکەین، و ڕۆژێن گران ژی ب ئێک دەست دبورینین.</p>
+ <p>ئەز هێشتا فێر دبم چاوا باشتر ل تە گوه بدەم، و تو هێشتا ئەو کەسی یا ئەز دڤێت پێ بێژم هەمی تشتان.</p>
+ <p class="sig">هێشتا تە هەلدبژێرم، ڕۆژەکێ ل دووڤ ڕۆژەکێ. — محەمەد ♡</p>
+ </article>
+</section>
+
+
+<!-- ══════ سندوقا گەنجینان ══════ -->
+<section id="chestS" class="c">
+ <h2>تشتەکێ دی هەیە دڤێت تو بدۆزی...</h2>
+ <button id="chest" aria-label="سندوقێ ڤەکە">◈</button>
+ <div id="tr">
+  <button class="btn" data-t="a">گەنجینا ئێکێ — ستایشەکا نهێنی</button>
+  <button class="btn" data-t="b">گەنجینا دووێ — بەلێنەکا بچووک</button>
+  <button class="btn" data-t="c">گەنجینا سییێ — پەیاما هەرە گرنگ</button>
+ </div><div class="msg" id="tm2"></div>
+</section>
+
+
+<!-- ══════ کویز ══════ -->
+<section id="quiz">
+ <h2>تو چەند گەردوونا مە دزانی؟</h2>
+ <div class="glass c"><div id="qq" class="msg" style="color:var(--tx)"></div><div id="qa"></div></div>
+</section>
+
+
+<!-- ══════ ژمێرەر ══════ -->
+<section id="counter">
+ <h2>هەر دەمەک دیارییەکە</h2>
+ <div class="glass"><div id="cn"></div></div>
+ <p class="sub" style="margin-top:14px">دەم دشێت دەمان بژمێریت، بەلێ ناشێت بهایێ کەسەکی ل دلێ مە بپێڤیت.</p>
+</section>
+
+<section class="c" id="wishS"><h2>ئاسمانەک کو ئاهەنگێ ژ بۆ تە دگێڕیت</h2><button class="btn" id="wish">هیڤییەکێ بکە، ئەڤینا من</button></section>
+
+
+<!-- ══════ شانۆیا کۆتایێ ══════ -->
+<section id="fin"><p id="f1">و پشتی هەمی ستێران...</p><p id="f2">...هەمی گولان...</p><p id="f3">...هەمی پەیڤان...</p><p id="f4">...هێشتا تشتەک هەیە دڤێت تو بزانی.</p>
+ <p class="big" id="f5">هەجها، تو یا ئەڤیندارکری!</p>
+ <p id="f6" style="font-size:19px">نە ژ بەر کو پێدڤییە تو کامل بی. نە ژ بەر کو پێدڤییە تشتەکی ب سەلمینی. بەلێ ژ بەر کو تو تویی.</p>
+ <p id="f7" style="font-size:19px">سوپاس ژ بۆ هندێ تو بەشەک ژ چیرۆکا مەیی.<br>چ ئەم بەرەڤ ژ سبەهی بچین، هیڤییا من ئەوە ئەم ب میهرەبانی ل ئێک بنێرین، بیرهاتنێن جوان چێکەین، و هەردەم هۆکارێن بزەکێ بدۆزین.<br>تو دێ هەردەم جهەکێ تایبەت ل دلێ من هەبی.<br>ب ئەڤینەکا مەزن، محەمەد ♡</p>
+ <button class="btn on" id="again" style="opacity:1">ڤە بگەڕە ناڤ گەردوونا مە ♡</button>
+</section>
+</main>
+
+
+<!-- ══════ شاشێن تەمام: ئاسمان، پەیاما گرنگ، موزیک ══════ -->
+<div class="ov" id="wo"><canvas id="wc"></canvas><div id="moon"></div><p id="w1"></p><p id="w2"></p><button class="btn" id="wx" style="position:relative;z-index:2">دابخە</button></div>
+<div class="ov" id="co"><p>ئەگەر دەمەکێ بچم یان بێژم دڤێت یەک کەس بناسم، بدەم دۆستی، ل گەل بکەنم، و ل هەمی ڕۆژێن ئاسایی و نایاب بدۆزم...</p><p style="color:var(--pink)">دلێ من دێ هەر ل تە گەڕیت، هەجها.</p><p style="color:var(--gold)">تو جادوییا من یا هەرە حەزکری یی. ♡</p><button class="btn" id="cx">دابخە</button></div>
+<div id="mp" class="min"><button id="mpb" aria-label="موزیک"><span id="disc"></span></button><span class="x" id="mt">گۆرانیا مە</span><button class="x" id="pp" aria-label="لێدان/ڕاوەستان">▶</button><button class="x" id="mu" aria-label="بێدەنگ">🔊</button><input class="x" type="range" id="vo" min="0" max="1" step=".05" value=".6" aria-label="دەنگ"><audio id="au" loop preload="none"></audio></div>
+<div id="toast"></div>
+
+<script src="script.js"></script></body></html>
