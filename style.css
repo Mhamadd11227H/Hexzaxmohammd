@@ -1,0 +1,764 @@
+/* ═══ style.css — ڕووکارێ ماڵپەڕێ (ڕەنگ، قەبارە، ئەنیمەیشن) ═══ */
+
+/* ڕەنگان: --pink گولاوی، --lav مۆر، --gold زێڕین، --bg پاشبنەما. ل ڤێرێ ڕەنگان بگۆڕە */
+:root {
+  --bg:#0a0517;
+  --bg2:#1a0d3a;
+  --lav:#cdbbff;
+  --pink:#ff9ec4;
+  --gold:#ecd29b;
+  --glass:rgba(255,255,255,.07);
+  --tx:#f4eefc
+}
+
+* {
+  box-sizing:border-box;
+  margin:0;
+  -webkit-tap-highlight-color:transparent
+}
+
+html {
+  scroll-behavior:smooth
+}
+
+body {
+  background:radial-gradient(120% 80% at 50% 0,var(--bg2),var(--bg) 70%) fixed;
+  color:var(--tx);
+  font:400 18px/2 'Noto Naskh Arabic',Amiri,serif;
+  overflow-x:hidden
+}
+
+canvas#bg {
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+  pointer-events:none
+}
+
+h1,h2,h3 {
+  font-family:Amiri,serif;
+  font-weight:700;
+  line-height:1.5
+}
+
+h2 {
+  font-size:clamp(26px,7vw,40px);
+  color:var(--gold);
+  text-align:center;
+  margin-bottom:6px
+}.sub {
+  text-align:center;
+  color:var(--lav);
+  opacity:.85;
+  margin-bottom:22px
+}
+
+section {
+  position:relative;
+  z-index:1;
+  padding:64px 20px;
+  max-width:760px;
+  margin:auto
+}
+
+button {
+  font:inherit;
+  color:inherit;
+  cursor:pointer;
+  border:0;
+  background:none
+}
+
+:focus-visible {
+  outline:2px solid var(--gold);
+  outline-offset:3px
+}.btn {
+  padding:10px 26px;
+  border-radius:40px;
+  border:1px solid var(--gold);
+  background:linear-gradient(135deg,rgba(236,210,155,.18),rgba(255,158,196,.18));
+  box-shadow:0 0 22px rgba(255,158,196,.25);
+  transition:.3s
+}.btn:active {
+  transform:scale(.96);
+  box-shadow:0 0 34px rgba(255,158,196,.6)
+}.glass {
+  background:var(--glass);
+  border:1px solid rgba(236,210,155,.25);
+  border-radius:22px;
+  padding:22px;
+  backdrop-filter:blur(8px)
+}.c {
+  text-align:center
+}
+
+/* ════════ دەستپێک (شاشا ئێکێ) ════════ */
+#intro {
+  position:fixed;
+  inset:0;
+  z-index:50;
+  background:#06030f;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  padding:24px;
+  text-align:center;
+  transition:opacity 1.6s,transform 1.6s
+}
+
+#intro.out {
+  opacity:0;
+  transform:scale(1.6);
+  pointer-events:none
+}
+
+#intro p {
+  font:700 clamp(21px,5.6vw,30px)/1.9 Amiri;
+  opacity:0;
+  transition:opacity 2s;
+  max-width:520px
+}
+
+#intro p.on {
+  opacity:1;
+  text-shadow:0 0 18px var(--lav)
+}
+
+#intro .btn {
+  opacity:0;
+  transition:opacity 2s
+}
+
+#intro .btn.on {
+  opacity:1
+}.foot {
+  position:absolute;
+  bottom:18px;
+  font-size:14px;
+  color:var(--lav);
+  opacity:.7
+}.heart {
+  width:96px;
+  height:96px;
+  filter:drop-shadow(0 0 16px var(--pink));
+  animation:beat 1.4s infinite;
+  opacity:0;
+  transition:opacity 2s
+}.heart.on {
+  opacity:1
+}.heart path {
+  fill:url(#hg)
+}
+
+@keyframes beat {
+  0%,100% {
+    transform:scale(1)
+  }
+  15% {
+    transform:scale(1.18)
+  }
+  30% {
+    transform:scale(1)
+  }
+  45% {
+    transform:scale(1.1)
+  }
+}
+
+/* ════════ هێرۆ (سەرێ پەڕێ) ════════ */
+#hero {
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  text-align:center
+}
+
+#hero h1 {
+  font-size:clamp(30px,8.5vw,48px);
+  color:var(--pink);
+  text-shadow:0 0 24px rgba(255,158,196,.5)
+}
+
+#hc {
+  width:min(280px,70vw);
+  height:min(280px,70vw);
+  cursor:pointer
+}
+
+#typed {
+  min-height:7.5em;
+  font-size:19px;
+  max-width:560px
+}.row {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  justify-content:center
+}.tiny {
+  position:absolute;
+  color:var(--gold);
+  font-size:16px;
+  opacity:.55;
+  animation:tw 3s infinite
+}
+
+@keyframes tw {
+  50% {
+    opacity:1;
+    text-shadow:0 0 10px var(--gold)
+  }
+}
+
+/* ════════ نامە و مۆر ════════ */
+.env {
+  display:block;
+  margin:20px auto;
+  width:min(300px,80vw);
+  aspect-ratio:3/2;
+  border-radius:10px;
+  background:linear-gradient(160deg,#3a2268,#241048);
+  border:1px solid var(--gold);
+  position:relative;
+  box-shadow:0 0 40px rgba(255,158,196,.2)
+}.env:before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom right,transparent 49.5%,rgba(236,210,155,.35) 50%) top/100% 55% no-repeat;
+  transition:.8s;
+  transform-origin:top;
+  border-radius:10px 10px 0 0
+}.env.open:before {
+  transform:scaleY(-1);
+  opacity:.3
+}.seal {
+  position:absolute;
+  left:50%;
+  top:44%;
+  translate:-50% -50%;
+  width:66px;
+  height:66px;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#ff6f9c,#a3123d);
+  display:grid;
+  place-items:center;
+  font:700 15px Amiri;
+  box-shadow:0 4px 18px rgba(0,0,0,.5);
+  animation:beat 2s infinite;
+  transition:.6s
+}.env.open .seal {
+  opacity:0;
+  scale:.2
+}.paper {
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  background:linear-gradient(#fbf3e2,#f1e4c8);
+  color:#3b2a2a;
+  border-radius:6px;
+  padding:0 22px;
+  transition:max-height 2.5s ease,opacity 1s,padding 1s;
+  box-shadow:0 0 50px rgba(255,200,120,.35)
+}.paper.open {
+  max-height:3000px;
+  opacity:1;
+  padding:26px 22px
+}.paper p {
+  opacity:0;
+  transition:opacity 1.6s;
+  margin-bottom:12px;
+  font-size:17.5px;
+  line-height:2.1
+}.paper p.on {
+  opacity:1
+}.sig {
+  font:700 24px Amiri;
+  color:#8a1c49
+}
+
+/* ════════ ڕێزا چیرۆکێ ════════ */
+.tl {
+  position:relative;
+  padding-inline-start:30px;
+  margin-top:20px
+}.tl:before {
+  content:"";
+  position:absolute;
+  inset-block:0;
+  inset-inline-start:8px;
+  width:2px;
+  background:linear-gradient(var(--pink),var(--lav),var(--gold));
+  box-shadow:0 0 12px var(--pink)
+}.tl .it {
+  position:relative;
+  margin-bottom:18px;
+  opacity:0;
+  transform:translateY(20px);
+  transition:.9s
+}.tl .it.in {
+  opacity:1;
+  transform:none
+}.tl .it:before {
+  content:"♡";
+  position:absolute;
+  inset-inline-start:-31px;
+  top:12px;
+  color:var(--pink);
+  font-size:15px;
+  background:var(--bg);
+  text-shadow:0 0 8px var(--pink)
+}.tl h3 {
+  color:var(--lav);
+  font-size:20px
+}.tl p {
+  font-size:16px;
+  line-height:1.9
+}
+
+form.add {
+  display:none;
+  margin-top:14px;
+  gap:10px;
+  flex-direction:column
+}
+
+form.add.on {
+  display:flex
+}
+
+input,textarea {
+  font:inherit;
+  background:rgba(255,255,255,.08);
+  color:var(--tx);
+  border:1px solid var(--lav);
+  border-radius:14px;
+  padding:8px 14px;
+  width:100%
+}
+
+/* ════════ ئاسمانا ستێران ════════ */
+#sky {
+  position:relative;
+  height:420px;
+  margin:10px 0;
+  border-radius:26px;
+  background:radial-gradient(circle,rgba(120,80,200,.28),transparent 70%);
+  overflow:hidden
+}
+
+#sky svg {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none
+}.st {
+  position:absolute;
+  width:30px;
+  height:30px;
+  translate:-50% -50%;
+  color:var(--lav);
+  font-size:17px;
+  line-height:30px;
+  text-align:center;
+  animation:tw 4s infinite
+}.st.on {
+  color:var(--gold);
+  scale:1.5;
+  text-shadow:0 0 14px var(--gold)
+}
+
+#core {
+  position:absolute;
+  left:50%;
+  top:50%;
+  translate:-50% -50%;
+  color:var(--pink);
+  font-size:34px;
+  text-shadow:0 0 18px var(--pink);
+  animation:beat 1.6s infinite
+}
+
+#rmsg {
+  min-height:90px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  font:700 21px/1.9 Amiri
+}
+
+/* ════════ دلێ لێدەر ════════ */
+#bh {
+  width:min(220px,60vw);
+  display:block;
+  margin:12px auto;
+  cursor:pointer;
+  filter:drop-shadow(0 0 20px var(--pink))
+}.names {
+  font:700 28px Amiri;
+  color:var(--gold);
+  text-align:center
+}
+
+/* ════════ باخچە ════════ */
+#gd {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:6px 14px;
+  position:relative;
+  padding:20px 0
+}.fl {
+  font-size:46px;
+  line-height:1.2;
+  color:#ff7fae;
+  text-shadow:0 0 14px #ff4f94;
+  transition:.6s;
+  filter:saturate(.5) brightness(.7);
+  scale:.7
+}.fl.b {
+  scale:1.25;
+  filter:none;
+  rotate:12deg
+}.gold {
+  color:var(--gold)!important;
+  text-shadow:0 0 14px var(--gold);
+  font-size:20px;
+  opacity:.45;
+  position:absolute;
+  inset-inline-end:8px;
+  bottom:0
+}.msg {
+  min-height:80px;
+  text-align:center;
+  font:700 20px/1.9 Amiri;
+  color:var(--lav)
+}
+
+/* ════════ سندوقا گەنجینان ════════ */
+#chest {
+  font:700 80px Amiri;
+  display:block;
+  margin:8px auto;
+  color:var(--gold);
+  text-shadow:0 0 30px var(--gold);
+  animation:tw 2.5s infinite
+}
+
+#tr {
+  display:none;
+  gap:10px;
+  flex-direction:column;
+  margin-top:10px
+}
+
+#tr.on {
+  display:flex
+}
+
+/* ════════ کویز ════════ */
+#qa button {
+  display:block;
+  width:100%;
+  margin:8px 0;
+  padding:8px 14px;
+  border:1px solid var(--lav);
+  border-radius:30px;
+  transition:.3s
+}
+
+#qa button:active,#qa button.pk {
+  background:rgba(255,158,196,.3);
+  box-shadow:0 0 18px var(--pink)
+}
+
+/* ════════ شاشێن تەمام (ئاسمان و پەیاما گرنگ) ════════ */
+.ov {
+  position:fixed;
+  inset:0;
+  z-index:40;
+  background:rgba(6,3,15,.95);
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  padding:26px;
+  text-align:center;
+  overflow:auto
+}.ov.on {
+  display:flex;
+  animation:fi 1.2s
+}
+
+@keyframes fi {
+  from {
+    opacity:0
+  }
+}.ov p {
+  font:700 clamp(20px,5.4vw,28px)/1.9 Amiri;
+  max-width:560px;
+  position:relative;
+  z-index:2
+}
+
+#wc {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%
+}
+
+#moon {
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#fff,#e7dcff 60%,#a99bd8);
+  box-shadow:0 0 60px #cdbbff;
+  position:relative;
+  z-index:2
+}
+
+/* ════════ ژمێرەر ════════ */
+#cn {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  text-align:center
+}
+
+#cn b {
+  display:block;
+  font:700 34px Amiri;
+  color:var(--pink)
+}
+
+#cn span {
+  font-size:14px;
+  color:var(--lav)
+}
+
+/* ════════ شانۆیا کۆتایێ ════════ */
+#fin {
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  gap:10px
+}
+
+#fin p {
+  font:700 clamp(20px,5.5vw,28px)/1.9 Amiri;
+  opacity:0;
+  transition:opacity 2s
+}
+
+#fin p.on {
+  opacity:1
+}
+
+#fin p.big {
+  font-size:clamp(30px,9vw,46px);
+  color:var(--pink);
+  text-shadow:0 0 26px var(--pink)
+}
+
+/* ════════ لێدەرێ موزیکێ ════════ */
+#mp {
+  position:fixed;
+  z-index:30;
+  inset-inline-start:12px;
+  bottom:12px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:40px;
+  background:rgba(20,10,45,.85);
+  border:1px solid var(--gold);
+  backdrop-filter:blur(8px);
+  font-size:14px
+}
+
+#mp.min .x {
+  display:none
+}
+
+#disc {
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:conic-gradient(var(--pink),var(--lav),var(--gold),var(--pink));
+  display:inline-block
+}
+
+#disc.sp {
+  animation:spin 6s linear infinite
+}
+
+@keyframes spin {
+  to {
+    rotate:360deg
+  }
+}
+
+#mp input[type=range] {
+  width:70px;
+  padding:0;
+  border:0;
+  background:none
+}
+
+#toast {
+  position:fixed;
+  z-index:60;
+  top:16px;
+  left:50%;
+  translate:-50% -30px;
+  opacity:0;
+  background:rgba(30,12,60,.95);
+  border:1px solid var(--gold);
+  border-radius:18px;
+  padding:8px 18px;
+  max-width:88vw;
+  text-align:center;
+  font-size:16px;
+  line-height:1.8;
+  transition:.6s;
+  pointer-events:none
+}
+
+#toast.on {
+  opacity:1;
+  translate:-50% 0
+}.fh {
+  position:fixed;
+  z-index:5;
+  color:var(--pink);
+  font-size:22px;
+  opacity:.5;
+  animation:fl 14s linear infinite;
+  inset-inline-end:8%;
+  bottom:-30px
+}
+
+@keyframes fl {
+  to {
+    translate:-40px -110vh
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  * {
+    animation:none!important;
+    transition-duration:.01s!important
+  }
+}
+
+/* ════════ ئەلبوما وێنەیان ════════ */
+.book {
+  position: relative;
+  padding: 14px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #3a2268, #1f0f45);
+  border: 1px solid var(--gold);
+  box-shadow: 0 0 40px rgba(255,158,196,.25), inset 0 0 30px rgba(0,0,0,.4);
+  touch-action: pan-y
+}
+.pg {
+  min-height: 380px;
+  display: grid;
+  place-items: center;
+  perspective: 900px;
+  animation: pgin .7s ease both
+}
+@keyframes pgin {
+  from { opacity: 0; transform: rotateY(calc(var(--d, 0) * 75deg)) }
+  to { opacity: 1; transform: none }
+}
+.pol {
+  background: #fbf3e2;
+  padding: 12px 12px 8px;
+  border-radius: 6px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.5);
+  width: min(100%, 360px);
+  text-align: center
+}
+.pol img {
+  display: block;
+  width: 100%;
+  max-height: 58vh;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: 3px
+}
+.pol figcaption {
+  color: #3b2a2a;
+  font: 700 19px/1.8 Amiri;
+  padding-top: 8px
+}
+.nop {
+  color: #8a1c49;
+  padding: 60px 10px;
+  font-size: 16px
+}
+.cvr {
+  text-align: center;
+  padding: 20px;
+  font: 700 22px/1.9 Amiri;
+  color: var(--gold)
+}
+.cvr .ct { font-size: 30px; text-shadow: 0 0 18px var(--gold) }
+.cvr .cn2 { font-size: 60px; color: var(--pink); animation: beat 1.6s infinite }
+.cvr .cs { color: var(--pink) }
+.cvr .ch { font-size: 15px; color: var(--lav); margin-top: 14px }
+.bnav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin-top: 16px
+}
+.bnav .btn { font-size: 24px; padding: 4px 22px }
+.bnav .btn:disabled { opacity: .3 }
+
+/* ════════ ناڤێ خۆ ل ئاسمانی بنڤیسە ════════ */
+#nc {
+  width: 100%;
+  height: 300px;
+  display: block;
+  border-radius: 20px;
+  border: 1px solid var(--gold);
+  background: radial-gradient(circle, rgba(120,80,200,.28), #08031a 80%);
+  touch-action: none
+}
+
+/* ════════ ئاسمانا ڕۆژا ناسینا مە ════════ */
+#as { position: relative }
+#ac {
+  width: 100%;
+  height: 340px;
+  display: block;
+  border-radius: 20px;
+  border: 1px solid var(--gold);
+  background: radial-gradient(circle, #1b0f3d, #06030f 85%)
+}
+#al {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 14px;
+  text-align: center;
+  font: 700 22px/1.6 Amiri;
+  color: var(--gold);
+  pointer-events: none;
+  text-shadow: 0 0 12px #000
+}
